@@ -1,0 +1,196 @@
+import { Link } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X, ChevronDown, ArrowUpRight } from "lucide-react";
+import stralynnLogo from "../../assets/stralynn-logo.avif";
+
+type NavItem = {
+  label: string;
+  to?: string;
+  children?: { label: string; to: string; desc?: string }[];
+};
+
+const NAV: NavItem[] = [
+  {
+    label: "Services",
+    children: [
+      { label: "AI Digital Transformation", to: "/services/ai-digital-transformation", desc: "Enterprise AI, automation & data platforms" },
+      { label: "M&A Advisory", to: "/services/ma-advisory", desc: "Diligence, integration & value capture" },
+      { label: "BPO Transformation", to: "/services/bpo-transformation", desc: "Reinvent operations with intelligent ops" },
+      { label: "Enterprise Implementations", to: "/services/ai-digital-transformation", desc: "Salesforce, ERP & Certinia transformations" },
+    ],
+  },
+  {
+    label: "Industries",
+    children: [
+      { label: "Healthcare", to: "/industries/healthcare", desc: "Care delivery, payers & life sciences" },
+      { label: "Private Equity", to: "/industries/private-equity", desc: "Portfolio value creation" },
+      { label: "Financial Services", to: "/industries/financial-services", desc: "Banking, insurance & capital markets" },
+      { label: "Technology", to: "/industries/healthcare", desc: "Scale-ups to platform giants" },
+    ],
+  },
+  { label: "Insights", to: "/insights" },
+  { label: "About", to: "/about" },
+  { label: "Careers", to: "/careers" },
+];
+
+export function Nav() {
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [openMenu, setOpenMenu] = useState<string | null>(null);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 16);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return (
+    <motion.header
+      initial={{ y: -20, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: [0.2, 0.8, 0.2, 1] }}
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
+        scrolled
+          ? "backdrop-blur-xl bg-background/75 border-b border-border/60"
+          : "bg-transparent"
+      }`}
+    >
+      <div className="container-x flex h-[72px] items-center justify-between">
+        <Link to="/" className="flex items-center gap-2.5 group">
+          <div className={`h-10 w-10 rounded-xl grid place-items-center transition-colors ${scrolled ? "bg-navy-deep" : "bg-cream/10 backdrop-blur border border-cream/15"}`}>
+            <img src={stralynnLogo} alt="Stralynn" className="h-7 w-7 object-contain" />
+          </div>
+          <span className={`font-display font-semibold tracking-tight text-lg transition-colors ${scrolled ? "text-foreground" : "text-cream"}`}>
+            Stralynn
+          </span>
+        </Link>
+
+        <nav className="hidden lg:flex items-center gap-1">
+          {NAV.map((item) => (
+            <div
+              key={item.label}
+              className="relative"
+              onMouseEnter={() => item.children && setOpenMenu(item.label)}
+              onMouseLeave={() => setOpenMenu(null)}
+            >
+              {item.children ? (
+                <button
+                  className={`flex items-center gap-1 px-4 py-2 text-sm font-medium transition-colors ${
+                    scrolled ? "text-foreground/80 hover:text-foreground" : "text-cream/85 hover:text-cream"
+                  }`}
+                >
+                  {item.label}
+                  <ChevronDown className="h-3.5 w-3.5 opacity-70" />
+                </button>
+              ) : (
+                <Link
+                  to={item.to!}
+                  className={`px-4 py-2 text-sm font-medium transition-colors ${
+                    scrolled ? "text-foreground/80 hover:text-foreground" : "text-cream/85 hover:text-cream"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              )}
+
+              <AnimatePresence>
+                {item.children && openMenu === item.label && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 8 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute left-0 top-full pt-3 w-[420px]"
+                  >
+                    <div className="rounded-2xl border border-border bg-popover/95 backdrop-blur-xl shadow-elegant p-3">
+                      {item.children.map((c) => (
+                        <Link
+                          key={c.label}
+                          to={c.to}
+                          className="flex items-start gap-3 rounded-xl p-3 hover:bg-muted transition-colors group"
+                        >
+                          <div className="flex-1 min-w-0">
+                            <div className="text-sm font-semibold text-foreground">{c.label}</div>
+                            {c.desc && <div className="text-xs text-muted-foreground mt-0.5">{c.desc}</div>}
+                          </div>
+                          <ArrowUpRight className="h-4 w-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
+                        </Link>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          ))}
+        </nav>
+
+        <div className="hidden lg:flex items-center gap-3">
+          <Link
+            to="/contact"
+            className="group inline-flex items-center gap-2 rounded-full bg-cream text-navy-deep px-5 py-2.5 text-sm font-semibold hover:bg-cream/90 transition-all"
+          >
+            Contact us
+            <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </Link>
+        </div>
+
+        <button
+          onClick={() => setOpen((v) => !v)}
+          className={`lg:hidden p-2 rounded-md ${scrolled ? "text-foreground" : "text-cream"}`}
+          aria-label="Menu"
+        >
+          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+        </button>
+      </div>
+
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            className="lg:hidden overflow-hidden bg-background/95 backdrop-blur-xl border-t border-border"
+          >
+            <div className="container-x py-6 flex flex-col gap-1">
+              {NAV.map((item) =>
+                item.children ? (
+                  <div key={item.label} className="py-2">
+                    <div className="text-xs uppercase tracking-widest text-muted-foreground mb-2">{item.label}</div>
+                    {item.children.map((c) => (
+                      <Link
+                        key={c.label}
+                        to={c.to}
+                        onClick={() => setOpen(false)}
+                        className="block py-2 text-foreground font-medium"
+                      >
+                        {c.label}
+                      </Link>
+                    ))}
+                  </div>
+                ) : (
+                  <Link
+                    key={item.label}
+                    to={item.to!}
+                    onClick={() => setOpen(false)}
+                    className="py-3 text-foreground font-medium border-b border-border"
+                  >
+                    {item.label}
+                  </Link>
+                )
+              )}
+              <Link
+                to="/contact"
+                onClick={() => setOpen(false)}
+                className="mt-4 inline-flex items-center justify-center gap-2 rounded-full gradient-hero text-cream px-5 py-3 font-semibold"
+              >
+                Contact us <ArrowUpRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.header>
+  );
+}
