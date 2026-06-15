@@ -30,7 +30,6 @@ const NAV: NavItem[] = [
     ],
   },
   { label: "Insights", to: "/insights" },
-  { label: "About", to: "/about" },
   { label: "Careers", to: "/careers" },
 ];
 
@@ -126,7 +125,17 @@ export function Nav() {
           ))}
         </nav>
 
-        <div className="hidden lg:flex items-center gap-3">
+        <div className="hidden lg:flex items-center gap-2">
+          <Link
+            to="/about"
+            className={`inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition-all ${
+              scrolled
+                ? "bg-foreground/5 text-foreground hover:bg-foreground/10 border border-border"
+                : "bg-cream/10 text-cream hover:bg-cream/20 border border-cream/20 backdrop-blur"
+            }`}
+          >
+            About
+          </Link>
           <Link
             to="/contact"
             className="group inline-flex items-center gap-2 rounded-full bg-cream text-navy-deep px-5 py-2.5 text-sm font-semibold hover:bg-cream/90 transition-all"

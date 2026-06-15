@@ -3,7 +3,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import {
   ArrowUpRight, ArrowDown, Sparkles, Workflow, LineChart, Brain,
-  Stethoscope, Banknote, Cpu, Building2, ShieldCheck, Quote,
+  Stethoscope, Banknote, Cpu, Building2, ShieldCheck, Quote, Flag, TrendingUp, Landmark, Newspaper,
 } from "lucide-react";
 import { Reveal, Stagger, StaggerItem } from "../components/site/Reveal";
 
@@ -181,6 +181,9 @@ function Home() {
         </div>
       </section>
 
+      {/* USA SPOTLIGHT */}
+      <UsaSpotlight />
+
       {/* INDUSTRIES */}
       <section className="py-24 md:py-32">
         <div className="container-x grid lg:grid-cols-[1fr_1.4fr] gap-16">
@@ -216,27 +219,40 @@ function Home() {
       </section>
 
       {/* TESTIMONIAL */}
-      <section className="py-24 md:py-32 bg-ink text-cream">
-        <div className="container-x max-w-4xl">
-          <Reveal>
-            <Quote className="h-10 w-10 text-cyan-glow mb-8" />
-          </Reveal>
-          <Reveal delay={0.1}>
-            <p className="font-display text-3xl md:text-4xl lg:text-5xl font-semibold leading-[1.15] text-cream">
-              "Stralynn rewired how we operate. In nine months we shipped an AI platform that now writes 60% of our underwriting memos — with better accuracy than our analysts."
-            </p>
-          </Reveal>
-          <Reveal delay={0.2}>
-            <div className="mt-10 flex items-center gap-4">
-              <div className="h-12 w-12 rounded-full gradient-accent" />
-              <div>
-                <div className="font-semibold">Maya Rasheed</div>
-                <div className="text-sm text-cream/60">Managing Partner, Vector Capital</div>
+      <section className="py-24 md:py-32 bg-ink text-cream overflow-hidden">
+        <div className="container-x grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div>
+            <Reveal>
+              <Quote className="h-10 w-10 text-cyan-glow mb-8" />
+            </Reveal>
+            <Reveal delay={0.1}>
+              <p className="font-display text-2xl md:text-3xl lg:text-4xl font-semibold leading-[1.2] text-cream">
+                "Stralynn rewired how we operate. In nine months we shipped an AI platform that now writes 60% of our underwriting memos — with better accuracy than our analysts."
+              </p>
+            </Reveal>
+            <Reveal delay={0.2}>
+              <div className="mt-10 flex items-center gap-4">
+                <div className="h-12 w-12 rounded-full gradient-accent" />
+                <div>
+                  <div className="font-semibold">Maya Rasheed</div>
+                  <div className="text-sm text-cream/60">Managing Partner, Vector Capital</div>
+                </div>
               </div>
+            </Reveal>
+          </div>
+          <Reveal delay={0.15}>
+            <div className="relative">
+              <div aria-hidden className="absolute -inset-6 bg-cyan-glow/10 rounded-3xl blur-2xl" />
+              <img
+                src="https://images.unsplash.com/photo-1664575602276-acd073f104c1?auto=format&fit=crop&w=1400&q=80"
+                alt="Stralynn team in a working session with a client"
+                className="relative rounded-3xl aspect-[5/6] object-cover w-full shadow-elegant"
+              />
             </div>
           </Reveal>
         </div>
       </section>
+
 
       {/* CTA */}
       <section className="py-24 md:py-32 bg-background">
@@ -265,3 +281,80 @@ function Home() {
     </>
   );
 }
+
+const usaItems = [
+  {
+    icon: Flag,
+    tag: "U.S. Market Pulse",
+    title: "Federal AI procurement is reshaping enterprise buying",
+    desc: "New OMB guidance is accelerating responsible-AI standards across U.S. agencies and the Fortune 500 vendors who serve them.",
+  },
+  {
+    icon: TrendingUp,
+    tag: "Trending",
+    title: "U.S. private equity sponsors lean into agentic ops",
+    desc: "Portfolio operators are deploying AI agents to lift EBITDA margins by 300–600 bps within the first 12 months of ownership.",
+  },
+  {
+    icon: Landmark,
+    tag: "Regulation",
+    title: "State-level AI laws (CA, CO, NY) are now in force",
+    desc: "We help U.S. enterprises stand up governance that satisfies CCPA, NYDFS Part 500 and emerging EU AI Act parity in one pass.",
+  },
+  {
+    icon: Newspaper,
+    tag: "Client Impact",
+    title: "$1.2B in value delivered to U.S. clients in 2025",
+    desc: "From a top-10 U.S. health system to a Nasdaq-listed fintech, our American clients shipped 40+ production AI systems with us last year.",
+  },
+];
+
+function UsaSpotlight() {
+  return (
+    <section className="relative py-24 md:py-32 overflow-hidden bg-navy-deep text-cream">
+      <div aria-hidden className="absolute inset-0 [background:radial-gradient(700px_400px_at_85%_15%,oklch(0.72_0.14_220/.25),transparent_60%)]" />
+      <div aria-hidden className="absolute inset-0 opacity-[0.06] [background-image:repeating-linear-gradient(0deg,transparent_0_38px,oklch(0.95_0_0)_38px_39px),repeating-linear-gradient(90deg,transparent_0_60px,oklch(0.95_0_0)_60px_61px)]" />
+
+      <div className="relative container-x">
+        <div className="grid lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-16 items-end mb-14">
+          <Reveal>
+            <div>
+              <div className="inline-flex items-center gap-2 rounded-full border border-cream/20 bg-cream/5 backdrop-blur px-4 py-1.5 text-xs uppercase tracking-[0.22em] text-cream/85 mb-5">
+                <Flag className="h-3.5 w-3.5 text-cyan-glow" />
+                United States Spotlight
+              </div>
+              <h2 className="font-display text-4xl md:text-5xl font-semibold leading-tight">
+                What's moving the dial for <span className="font-editorial italic gradient-accent-text">U.S. enterprises</span> right now.
+              </h2>
+            </div>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <p className="text-lg text-cream/75 leading-relaxed">
+              From Silicon Valley scale-ups to East Coast institutions, we track the policy shifts, capital flows and AI breakthroughs reshaping how American companies compete — and we translate them into action for our clients.
+            </p>
+          </Reveal>
+        </div>
+
+        <Stagger className="grid md:grid-cols-2 gap-5">
+          {usaItems.map((item) => (
+            <StaggerItem key={item.title}>
+              <div className="group h-full p-7 md:p-8 rounded-2xl border border-cream/10 bg-cream/[0.03] backdrop-blur hover:bg-cream/[0.06] hover:border-cream/20 transition-all">
+                <div className="flex items-start gap-5">
+                  <div className="h-12 w-12 rounded-xl bg-cream/10 grid place-items-center shrink-0 group-hover:bg-cyan-glow/20 transition-colors">
+                    <item.icon className="h-5 w-5 text-cyan-glow" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="text-[10px] uppercase tracking-[0.22em] text-cyan-glow mb-2">{item.tag}</div>
+                    <h3 className="font-display text-xl md:text-2xl font-semibold leading-snug text-cream">{item.title}</h3>
+                    <p className="mt-3 text-sm text-cream/70 leading-relaxed">{item.desc}</p>
+                  </div>
+                </div>
+              </div>
+            </StaggerItem>
+          ))}
+        </Stagger>
+      </div>
+    </section>
+  );
+}
+

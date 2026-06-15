@@ -90,11 +90,11 @@ function AboutPage() {
           <Stagger className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {leaders.map((l) => (
               <StaggerItem key={l.name}>
-                <div className="group">
-                  <div className="overflow-hidden rounded-2xl aspect-[4/5] bg-secondary">
-                    <img src={l.img} alt={l.name} className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                <div className="group rounded-2xl bg-background border border-border overflow-hidden shadow-soft transition-all duration-500 hover:-translate-y-2 hover:scale-[1.03] hover:shadow-elegant cursor-pointer">
+                  <div className="overflow-hidden aspect-[4/5] bg-secondary">
+                    <img src={l.img} alt={l.name} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" />
                   </div>
-                  <div className="mt-4">
+                  <div className="p-5">
                     <div className="font-display text-lg font-semibold">{l.name}</div>
                     <div className="text-sm text-muted-foreground">{l.role}</div>
                   </div>
