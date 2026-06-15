@@ -103,8 +103,8 @@ function Page() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <Reveal>
               <img
-                src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1400&q=80"
-                alt="AI transformation"
+                src="https://images.unsplash.com/photo-1664575602554-2087b04935a5?auto=format&fit=crop&w=1400&q=80"
+                alt="AI transformation analytics dashboard"
                 className="rounded-3xl aspect-[4/5] object-cover shadow-elegant w-full"
               />
             </Reveal>

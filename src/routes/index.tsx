@@ -3,7 +3,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import {
   ArrowUpRight, ArrowDown, Sparkles, Workflow, LineChart, Brain,
-  Stethoscope, Banknote, Cpu, Building2, ShieldCheck, Quote,
+  Stethoscope, Banknote, Cpu, Building2, ShieldCheck, Quote, Flag, TrendingUp, Landmark, Newspaper,
 } from "lucide-react";
 import { Reveal, Stagger, StaggerItem } from "../components/site/Reveal";
 
