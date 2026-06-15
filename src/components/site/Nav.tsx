@@ -17,7 +17,7 @@ const NAV: NavItem[] = [
       { label: "AI Digital Transformation", to: "/services/ai-digital-transformation", desc: "Enterprise AI, automation & data platforms" },
       { label: "M&A Advisory", to: "/services/ma-advisory", desc: "Diligence, integration & value capture" },
       { label: "BPO Transformation", to: "/services/bpo-transformation", desc: "Reinvent operations with intelligent ops" },
-      { label: "Enterprise Implementations", to: "/services/ai-digital-transformation", desc: "Salesforce, ERP & Certinia transformations" },
+      { label: "Enterprise Implementations", to: "/services/enterprise-implementations", desc: "Salesforce, ERP & Certinia transformations" },
     ],
   },
   {
@@ -26,7 +26,8 @@ const NAV: NavItem[] = [
       { label: "Healthcare", to: "/industries/healthcare", desc: "Care delivery, payers & life sciences" },
       { label: "Private Equity", to: "/industries/private-equity", desc: "Portfolio value creation" },
       { label: "Financial Services", to: "/industries/financial-services", desc: "Banking, insurance & capital markets" },
-      { label: "Technology", to: "/industries/healthcare", desc: "Scale-ups to platform giants" },
+      { label: "Technology", to: "/industries/technology", desc: "Scale-ups to platform giants" },
+
     ],
   },
   { label: "Insights", to: "/insights" },
