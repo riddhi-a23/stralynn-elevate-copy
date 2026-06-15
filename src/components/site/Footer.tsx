@@ -15,7 +15,7 @@ const columns: { title: string; links: { label: string; to: string }[] }[] = [
       { label: "AI Digital Transformation", to: "/services/ai-digital-transformation" },
       { label: "M&A Advisory", to: "/services/ma-advisory" },
       { label: "BPO Transformation", to: "/services/bpo-transformation" },
-      { label: "Enterprise Implementations", to: "/services/ai-digital-transformation" },
+      { label: "Enterprise Implementations", to: "/services/enterprise-implementations" },
     ],
   },
   {
@@ -24,7 +24,7 @@ const columns: { title: string; links: { label: string; to: string }[] }[] = [
       { label: "Healthcare", to: "/industries/healthcare" },
       { label: "Private Equity", to: "/industries/private-equity" },
       { label: "Financial Services", to: "/industries/financial-services" },
-      { label: "Technology", to: "/industries/healthcare" },
+      { label: "Technology", to: "/industries/technology" },
     ],
   },
   {
