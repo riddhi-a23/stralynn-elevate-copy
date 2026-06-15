@@ -219,27 +219,40 @@ function Home() {
       </section>
 
       {/* TESTIMONIAL */}
-      <section className="py-24 md:py-32 bg-ink text-cream">
-        <div className="container-x max-w-4xl">
-          <Reveal>
-            <Quote className="h-10 w-10 text-cyan-glow mb-8" />
-          </Reveal>
-          <Reveal delay={0.1}>
-            <p className="font-display text-3xl md:text-4xl lg:text-5xl font-semibold leading-[1.15] text-cream">
-              "Stralynn rewired how we operate. In nine months we shipped an AI platform that now writes 60% of our underwriting memos — with better accuracy than our analysts."
-            </p>
-          </Reveal>
-          <Reveal delay={0.2}>
-            <div className="mt-10 flex items-center gap-4">
-              <div className="h-12 w-12 rounded-full gradient-accent" />
-              <div>
-                <div className="font-semibold">Maya Rasheed</div>
-                <div className="text-sm text-cream/60">Managing Partner, Vector Capital</div>
+      <section className="py-24 md:py-32 bg-ink text-cream overflow-hidden">
+        <div className="container-x grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div>
+            <Reveal>
+              <Quote className="h-10 w-10 text-cyan-glow mb-8" />
+            </Reveal>
+            <Reveal delay={0.1}>
+              <p className="font-display text-2xl md:text-3xl lg:text-4xl font-semibold leading-[1.2] text-cream">
+                "Stralynn rewired how we operate. In nine months we shipped an AI platform that now writes 60% of our underwriting memos — with better accuracy than our analysts."
+              </p>
+            </Reveal>
+            <Reveal delay={0.2}>
+              <div className="mt-10 flex items-center gap-4">
+                <div className="h-12 w-12 rounded-full gradient-accent" />
+                <div>
+                  <div className="font-semibold">Maya Rasheed</div>
+                  <div className="text-sm text-cream/60">Managing Partner, Vector Capital</div>
+                </div>
               </div>
+            </Reveal>
+          </div>
+          <Reveal delay={0.15}>
+            <div className="relative">
+              <div aria-hidden className="absolute -inset-6 bg-cyan-glow/10 rounded-3xl blur-2xl" />
+              <img
+                src="https://images.unsplash.com/photo-1664575602276-acd073f104c1?auto=format&fit=crop&w=1400&q=80"
+                alt="Stralynn team in a working session with a client"
+                className="relative rounded-3xl aspect-[5/6] object-cover w-full shadow-elegant"
+              />
             </div>
           </Reveal>
         </div>
       </section>
+
 
       {/* CTA */}
       <section className="py-24 md:py-32 bg-background">
