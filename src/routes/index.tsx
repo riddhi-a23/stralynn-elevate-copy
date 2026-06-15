@@ -181,6 +181,9 @@ function Home() {
         </div>
       </section>
 
+      {/* USA SPOTLIGHT */}
+      <UsaSpotlight />
+
       {/* INDUSTRIES */}
       <section className="py-24 md:py-32">
         <div className="container-x grid lg:grid-cols-[1fr_1.4fr] gap-16">
